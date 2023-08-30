@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import TextField from '@mui/material/TextField';
 import { Autocomplete } from "@mui/material"
+import { NavLink } from 'react-router-dom';
 
 const Searchbar = ({setResearch}) => {
 
@@ -34,13 +35,12 @@ const Searchbar = ({setResearch}) => {
     }));
 
     return (
-        <div className='searchbar'>
+        <NavLink to="/search" className='searchbar'>
             <Autocomplete
             id="searchbar"
             options={toPascalEntries.sort((a, b) => -b.category.localeCompare(a.category))}
             groupBy={(option) => option.category}
             getOptionLabel={option => option.name}
-            // isOptionEqualToValue(toPascalEntries.filter(entry => entry.name === option.name))
             sx={{ width: 500 }}
             renderInput={(params) => <TextField {...params} label="Search" />}
             onChange={(event, selectedValue) => {
@@ -61,7 +61,7 @@ const Searchbar = ({setResearch}) => {
                 option.name === value.name
             }
             />
-        </div>
+        </NavLink>
     )
 }
 

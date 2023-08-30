@@ -1,17 +1,27 @@
-const PageManagement = () => {
+import { useEffect } from "react";
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
-    useEffect(() => {
-        setTotalPages(Math.ceil(creatures.length / entryPerPage));
-    }, [creatures, entryPerPage, setTotalPages]);
+const PageManagement = ({prevPage, nextPage, setCurrentPage, currentPage, totalPages}) => {
 
-    const indexOfLast = currentPage * entryPerPage;
-    const indexOfFirst = indexOfLastCreature - entryPerPage;
-    const currentEntries = creatures.slice(indexOfFirst, indexOfLast);
+    const HandleChange = (event, value) => {
+        console.log(value);
+        if (value < currentPage) {
+            prevPage()
+            setCurrentPage(value)
+        } else if (value > currentPage) {
+            nextPage()
+            setCurrentPage(value)
+        }
+    }
 
     return (
         <>
-            <button onClick={prevPage} disabled={currentPage === 1}>Page précédente</button>
-            <button onClick={nextPage} disabled={currentPage === totalPages}>Page suivante</button>
+            <Stack spacing={1}>
+                <Pagination count={totalPages} page={currentPage} onChange={HandleChange} showFirstButton showLastButton />
+            </Stack>
         </>
     )
 }
+
+export default PageManagement;

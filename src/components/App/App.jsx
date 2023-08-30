@@ -1,3 +1,7 @@
+import { Routes, Route, useLocation } from "react-router-dom"
+import { NavLink } from 'react-router-dom';
+
+import Home from "../Home"
 import Searchbar from "../Searchbar"
 import Navbar from "../Navbar"
 import SearchResult from "../SearchResult"
@@ -6,11 +10,13 @@ import Equipments from "../Equipments"
 import Monsters from "../Monsters"
 import Treasures from "../Treasures"
 import Creatures from "../Creatures"
+import PageManagement from "../PageManagement";
 import { useState, useEffect } from "react"
 import axios from "axios";
 
 import logo from '../../assets/logoBOTW.png'
 import './App.css'
+
 
 
 const App = () => {
@@ -25,7 +31,9 @@ const App = () => {
 
     const [totalPages , setTotalPages ] = useState(1);
 
-    const entryPerPage = 12;
+    const entryPerPage = 8;
+
+    const location = useLocation()
 
     const nextPage = () => {
         if (currentPage < totalPages) {
@@ -65,24 +73,32 @@ const App = () => {
     return (
         <>
             <header>
-                <img id="logo" src={logo} />
+                <NavLink to={'/'}><img id="logo" src={logo} /></NavLink>
                 <Navbar page={page} setPage={setPage} setResearch={setResearch} />
-                <Searchbar setResearch={setResearch} />                
+                <Searchbar setResearch={setResearch} />
             </header> 
-            {(research !== "") ? <SearchResult searchToShow={searchToShow} /> :
-            (page === "Creatures") ? <Creatures {...pageGestion} /> : 
-            (page === "Monsters") ? <Monsters {...pageGestion} /> : 
-            (page === "Materials") ? <Materials {...pageGestion} /> : 
-            (page === "Equipments") ? <Equipments {...pageGestion} /> :
-            <Treasures {...pageGestion} />}
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/search' element={<SearchResult searchToShow={searchToShow} />} />
+                <Route path='/creatures' element={<Creatures {...pageGestion} />} />
+                <Route path='/monsters' element={<Monsters {...pageGestion} />} />
+                <Route path='/materials' element={<Materials {...pageGestion} />} />
+                <Route path='/equipments' element={<Equipments {...pageGestion} />} />
+                <Route path='/treasures' element={<Treasures />} />
+            </Routes>
+            {location.pathname !== "/" && location.pathname !== "/search" && location.pathname !== "/treasures" && (
+                <footer>
+                    <PageManagement 
+                        prevPage={prevPage}
+                        nextPage={nextPage}
+                        setCurrentPage={setCurrentPage}
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                    />
+                </footer>
+            )}
         </>
     )
 }
 
 export default App
-
-// Récupérer les boutons et les intégrer dans un composant footer pour ne pas les dupliquer dans chaque page
-// Penser à clean tout les objet et props
-// et factoriser la gestion de page et le fetch
-
-// Essayer d'intégret le setTotalPage au fetch

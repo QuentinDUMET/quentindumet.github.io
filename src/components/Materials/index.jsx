@@ -38,8 +38,6 @@ const Materials = ({currentPage, prevPage, nextPage, totalPages, setTotalPages, 
     return (
         <div>
             {ulElt}
-            <button onClick={prevPage} disabled={currentPage === 1}>Page précédente</button>
-            <button onClick={nextPage} disabled={currentPage === totalPages}>Page suivante</button>
         </div>
     )
 } 

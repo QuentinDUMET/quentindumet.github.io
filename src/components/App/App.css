@@ -16,5 +16,12 @@ header {
     align-items: center;
     justify-content: space-between;
     position: sticky;
-    top: 0px
+    top: 0
+}
+
+footer {
+    display: flex;
+    position: sticky;
+    bottom: 0;
+    justify-content: center;
 }
