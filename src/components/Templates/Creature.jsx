@@ -1,5 +1,25 @@
-const CreatureTpl = ({creature}) => {    
+import * as React from 'react';
+import { useState } from "react"
 
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
+
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  }); 
+
+const CreatureTpl = ({creature}) => {  
+ 
     const cookingElt = creature.cooking_effect !== undefined && creature.cooking_effect !== "" ? <li>Cooking effect : {creature.cooking_effect} </li> : <li>No cooking effect</li>
 
     const locationElt = creature.common_locations === null ? <li> ??? </li> : creature.common_locations.map(location => {return (<li key={location}>{location}</li>)})
@@ -17,21 +37,64 @@ const CreatureTpl = ({creature}) => {
     ) :
     <li>No drops</li> 
 
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
     return (
-            <ul key={creature.id}>
-                <img src={creature.image}/>
-                <li>Creature name : {creature.name}</li>
-                <li>Description : {creature.description} </li>
-                {edibleElt}
-                {cookingElt}
-                {dropsElt}
-                <li>Location :
-                    <ul>
-                        {locationElt}
-                    </ul>
-                </li>
-                {dlcElt}
-            </ul>
+        <>
+            <Card raised sx={{ maxWidth: 280 }} onClick={handleClickOpen}>
+                <CardActionArea>
+                    <CardMedia
+                    component="img"
+                    height="280"
+                    image={creature.image}
+                    alt={creature.name}
+                    />
+                    <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        {creature.name}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        {creature.description}
+                    </Typography>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
+
+            <Dialog
+                open={open}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={handleClose}
+                aria-describedby="alert-dialog-slide-description"
+            >
+                <DialogTitle>{creature.name}</DialogTitle>
+                <DialogContent>
+                        <img src={creature.image} alt={creature.name} />
+                        <p>{creature.description}</p>
+                        <ul key={creature.id}>
+                            {edibleElt}
+                            {cookingElt}
+                            {dropsElt}
+                            <li>Location :
+                                <ul>
+                                    {locationElt}
+                                </ul>
+                            </li>
+                            {dlcElt}
+                        </ul>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Close</Button>
+                </DialogActions>
+            </Dialog>
+        </>
     )
 }
 

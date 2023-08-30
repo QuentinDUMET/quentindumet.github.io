@@ -5,7 +5,6 @@ import Stack from '@mui/material/Stack';
 const PageManagement = ({prevPage, nextPage, setCurrentPage, currentPage, totalPages}) => {
 
     const HandleChange = (event, value) => {
-        console.log(value);
         if (value < currentPage) {
             prevPage()
             setCurrentPage(value)

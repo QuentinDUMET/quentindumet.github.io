@@ -21,12 +21,9 @@ const Searchbar = ({setResearch}) => {
         getAllEntries()
     }, [])
 
-
-
     const toPascalCase = str => {
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     }
-
 
     const toPascalEntries = allEntries.map(entry => ({
         ...entry,
