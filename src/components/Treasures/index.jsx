@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import TreasureTpl from "../Templates/Treasure"
+import TreasureTpl from "./Treasure"
+
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Unstable_Grid2';
 
 const Treasures = () => {
 
@@ -22,14 +25,22 @@ const Treasures = () => {
     }, [])
     
     const ulElt = treasure.map(chest => {
-        return <TreasureTpl key={chest.id} chest={chest} />
+        return (
+            <Grid key={chest.id} xs="auto">
+                <TreasureTpl key={chest.id} chest={chest} />
+            </Grid>
+        )
     })
 
     
     return (
-        <div>
-            {ulElt}
-        </div>
+        <main>
+            <Box sx={{ flexGrow: 1 }}>
+                <Grid container rowSpacing={3} spacing={15} disableEqualOverflow>
+                    {ulElt}
+                </Grid>
+            </Box>
+        </main>
     )
 }
 

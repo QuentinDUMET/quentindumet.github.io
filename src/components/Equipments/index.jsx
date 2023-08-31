@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types'
 import { useState, useEffect } from "react"
 import axios from "axios"
-import EquipmentTpl from "../Templates/Equipment"
+import EquipmentTpl from "./Equipment"
 
-const Equipment = ({currentPage, prevPage, nextPage, totalPages, setTotalPages, entryPerPage}) => {
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Unstable_Grid2';
+
+const Equipment = ({currentPage, setTotalPages, entryPerPage}) => {
 
     const [stuff, setStuff] = useState([])
     
-
     useEffect(() => {
         setTotalPages(Math.ceil(stuff.length / entryPerPage));
     }, [stuff, entryPerPage, setTotalPages]);
@@ -32,13 +34,21 @@ const Equipment = ({currentPage, prevPage, nextPage, totalPages, setTotalPages, 
     }, [])
     
     const ulElt = currentStuffs.map(stuff => {
-        return <EquipmentTpl key={stuff.id} stuff={stuff}/>
+        return (
+            <Grid key={stuff.id} xs="auto">
+                <EquipmentTpl key={stuff.id} stuff={stuff}/>
+            </Grid>
+        )
     })
     
     return (
-        <div>
-            {ulElt}
-        </div>
+        <main>
+            <Box sx={{ flexGrow: 1 }}>
+                <Grid container rowSpacing={3} spacing={15} disableEqualOverflow>
+                    {ulElt}
+                </Grid>
+            </Box>
+        </main>
     )
 }
 

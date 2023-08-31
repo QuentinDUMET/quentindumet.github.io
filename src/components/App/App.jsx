@@ -31,7 +31,7 @@ const App = () => {
 
     const [totalPages , setTotalPages ] = useState(1);
 
-    const entryPerPage = 8;
+    const entryPerPage = 10;
 
     const location = useLocation()
 
@@ -86,7 +86,7 @@ const App = () => {
                 <Route path='/equipments' element={<Equipments {...pageGestion} />} />
                 <Route path='/treasures' element={<Treasures />} />
             </Routes>
-            {location.pathname !== "/" && location.pathname !== "/search" && location.pathname !== "/treasures" && (
+            {location.pathname !== "/" && location.pathname !== "/treasures" && (
                 <footer>
                     <PageManagement 
                         prevPage={prevPage}

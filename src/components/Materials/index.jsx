@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types'
 import { useState, useEffect } from "react"
 import axios from "axios"
-import MaterialsTpl from "../Templates/Material"
+import MaterialsTpl from "./Material"
 
-const Materials = ({currentPage, prevPage, nextPage, totalPages, setTotalPages, entryPerPage}) => {
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Unstable_Grid2';
+
+const Materials = ({currentPage, setTotalPages, entryPerPage}) => {
 
     const [material, setMaterial] = useState([])
 
@@ -32,13 +35,21 @@ const Materials = ({currentPage, prevPage, nextPage, totalPages, setTotalPages, 
     }, [])
     
     const ulElt = currentMaterial.map(item => {
-        return <MaterialsTpl key={item.id} item={item}/>
+        return (
+            <Grid key={item.id} xs="auto">
+                <MaterialsTpl key={item.id} item={item}/>
+            </Grid>
+        )
     })
 
     return (
-        <div>
-            {ulElt}
-        </div>
+        <main>
+            <Box sx={{ flexGrow: 1 }}>
+                <Grid container rowSpacing={3} spacing={15} disableEqualOverflow>
+                    {ulElt}
+                </Grid>
+            </Box>
+        </main>
     )
 } 
 

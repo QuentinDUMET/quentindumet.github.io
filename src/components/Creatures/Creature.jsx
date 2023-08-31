@@ -16,7 +16,7 @@ import Slide from '@mui/material/Slide';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
-  }); 
+}); 
 
 const CreatureTpl = ({creature}) => {  
  
@@ -42,26 +42,24 @@ const CreatureTpl = ({creature}) => {
     const handleClickOpen = () => {
       setOpen(true);
     };
-  
+
     const handleClose = () => {
-      setOpen(false);
+        setOpen(false);
     };
+    
     return (
         <>
-            <Card raised sx={{ maxWidth: 280 }} onClick={handleClickOpen}>
+            <Card raised sx={{ width: 280, height: 320 }} onClick={handleClickOpen}>
                 <CardActionArea>
                     <CardMedia
                     component="img"
-                    height="280"
+                    height="260"
                     image={creature.image}
                     alt={creature.name}
                     />
                     <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography sx={{ textAlign: 'center', textTransform: 'capitalize', fontSize: 20 }} gutterBottom variant="h5" component="div">
                         {creature.name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        {creature.description}
                     </Typography>
                     </CardContent>
                 </CardActionArea>
@@ -74,21 +72,21 @@ const CreatureTpl = ({creature}) => {
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle>{creature.name}</DialogTitle>
-                <DialogContent>
-                        <img src={creature.image} alt={creature.name} />
-                        <p>{creature.description}</p>
-                        <ul key={creature.id}>
-                            {edibleElt}
-                            {cookingElt}
-                            {dropsElt}
-                            <li>Location :
-                                <ul>
-                                    {locationElt}
-                                </ul>
-                            </li>
-                            {dlcElt}
-                        </ul>
+                <DialogTitle sx={{ textAlign: 'center', textTransform: 'capitalize', fontWeight: 'bold', fontSize: 24 }}>{creature.name}</DialogTitle>
+                <DialogContent sx={{ fontSize: 18, textAlign: 'justify' }}>
+                    <img style={{ display: 'block', margin: '0 auto', borderRadius: 20 }} src={creature.image} alt={creature.name} />
+                    <p>{creature.description}</p>
+                    <ul key={creature.id}>
+                        {edibleElt}
+                        {cookingElt}
+                        {dropsElt}
+                        <li>Location :
+                            <ul>
+                                {locationElt}
+                            </ul>
+                        </li>
+                        {dlcElt}
+                    </ul>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Close</Button>

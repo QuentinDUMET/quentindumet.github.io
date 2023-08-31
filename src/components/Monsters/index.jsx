@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types'
 import { useState, useEffect } from "react"
 import axios from "axios"
-import MonsterTpl from "../Templates/Monster"
+import MonsterTpl from "./Monster"
 
-const Monsters = ({currentPage, prevPage, nextPage, totalPages, setTotalPages, entryPerPage}) => {
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Unstable_Grid2';
+
+const Monsters = ({currentPage, setTotalPages, entryPerPage}) => {
 
     const [enemies, setEnemies] = useState([])
 
@@ -31,13 +34,21 @@ const Monsters = ({currentPage, prevPage, nextPage, totalPages, setTotalPages, e
     }, [])
 
     const ulElt = currentEnemies.map(enemy => {
-        return <MonsterTpl key={enemy.id} enemy={enemy}/>
+        return (
+            <Grid key={enemy.id} xs="auto">
+                <MonsterTpl key={enemy.id} enemy={enemy}/>
+            </Grid>
+        )
     })
 
     return (
-        <div>
-            {ulElt}
-        </div>
+        <main>
+            <Box sx={{ flexGrow: 1 }}>
+                <Grid container rowSpacing={3} spacing={15} disableEqualOverflow>
+                    {ulElt}
+                </Grid>
+            </Box>
+        </main>
     )
 }
 
