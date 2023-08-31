@@ -69,21 +69,21 @@ const App = () => {
         if (research !== "") {
         handleResearche(research)
     }}, [research])
-
+    
+    console.log(searchToShow);
     return (
         <>
             <header>
                 <NavLink to={'/'}><img id="logo" src={logo} /></NavLink>
                 <Navbar page={page} setPage={setPage} setResearch={setResearch} />
-                <Searchbar setResearch={setResearch} />
+                <Searchbar setResearch={setResearch} setSearchToShow={setSearchToShow} />
             </header> 
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/search' element={<SearchResult searchToShow={searchToShow} />} />
-                <Route path='/creatures' element={<Creatures {...pageGestion} />} />
-                <Route path='/monsters' element={<Monsters {...pageGestion} />} />
-                <Route path='/materials' element={<Materials {...pageGestion} />} />
-                <Route path='/equipments' element={<Equipments {...pageGestion} />} />
+                <Route path='/creatures' element={<><Creatures {...pageGestion} /> <SearchResult searchToShow={searchToShow} /></>} />
+                <Route path='/monsters' element={<><Monsters {...pageGestion} /> <SearchResult searchToShow={searchToShow} /></> } />
+                <Route path='/materials' element={<><Materials {...pageGestion} /> <SearchResult searchToShow={searchToShow} /></> } />
+                <Route path='/equipments' element={<><Equipments {...pageGestion} /> <SearchResult searchToShow={searchToShow} /></> } />
                 <Route path='/treasures' element={<Treasures />} />
             </Routes>
             {location.pathname !== "/" && location.pathname !== "/treasures" && (

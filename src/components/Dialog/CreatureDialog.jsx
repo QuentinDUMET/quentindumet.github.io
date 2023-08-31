@@ -12,7 +12,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 }); 
 
-const DialogCreature = ({ creature }) => {
+const CreatureDialog = ({ creature }) => {
 
     const cookingElt = creature.cooking_effect !== undefined && creature.cooking_effect !== "" ? <li>Cooking effect : {creature.cooking_effect} </li> : <li>No cooking effect</li>
 
@@ -36,6 +36,8 @@ const DialogCreature = ({ creature }) => {
     const handleClose = () => {
         setOpen(false);
     };
+
+    console.log(creature);
 
     return (
         <Dialog
@@ -68,4 +70,4 @@ const DialogCreature = ({ creature }) => {
     )
 }
 
-export default DialogCreature
+export default CreatureDialog

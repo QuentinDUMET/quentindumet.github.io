@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import TextField from '@mui/material/TextField';
 import { Autocomplete } from "@mui/material"
-import { NavLink } from 'react-router-dom';
 
-const Searchbar = ({setResearch}) => {
+const Searchbar = ({setResearch, setSearchToShow}) => {
 
     const [allEntries, setAllEntries] = useState([])
 
@@ -32,8 +31,7 @@ const Searchbar = ({setResearch}) => {
     }));
 
     return (
-        <NavLink to="/search" className='searchbar'>
-            <Autocomplete
+        <Autocomplete
             id="searchbar"
             options={toPascalEntries.sort((a, b) => -b.category.localeCompare(a.category))}
             groupBy={(option) => option.category}
@@ -41,7 +39,7 @@ const Searchbar = ({setResearch}) => {
             sx={{ width: 500 }}
             renderInput={(params) => <TextField {...params} label="Search" />}
             onChange={(event, selectedValue) => {
-                selectedValue ? setResearch(selectedValue.name) : setResearch('')
+                selectedValue ? setResearch(selectedValue.name) && setSearchToShow(selectedValue) : setResearch('')
             }}
             isOptionEqualToValue={(option, value) => 
                 option &&
@@ -57,8 +55,7 @@ const Searchbar = ({setResearch}) => {
                 option.image === value.image &&
                 option.name === value.name
             }
-            />
-        </NavLink>
+        />
     )
 }
 

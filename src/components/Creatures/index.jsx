@@ -6,7 +6,7 @@ import CreatureTpl from "./Creature"
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 
-const Creatures = ({currentPage, setTotalPages, entryPerPage}) => {
+const Creatures = ({currentPage, setTotalPages, entryPerPage, searchToShow }) => {
 
     const [creatures, setCreatures] = useState([])
 
@@ -36,7 +36,7 @@ const Creatures = ({currentPage, setTotalPages, entryPerPage}) => {
     const ulElt = currentCreatures.map(creature => {
         return (
             <Grid key={creature.id} xs="auto">
-                <CreatureTpl key={creature.id} creature={creature}/>
+                <CreatureTpl key={creature.id} creature={creature} searchToShow={searchToShow}/>
             </Grid>
         )
     })
@@ -54,9 +54,6 @@ const Creatures = ({currentPage, setTotalPages, entryPerPage}) => {
 
 Creatures.propTypes = {
     currentPage: PropTypes.number,
-    prevPage: PropTypes.func,
-    nextPage: PropTypes.func,
-    totalPages: PropTypes.number,
     setTotalPages: PropTypes.func,
     entryPerPage: PropTypes.number
 }
