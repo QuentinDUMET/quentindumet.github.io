@@ -31,13 +31,11 @@ const CreatureDialog = ({ creature }) => {
     ) :
     <li>No drops</li> 
 
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(true)
 
     const handleClose = () => {
-        setOpen(false);
-    };
-
-    console.log(creature);
+        setOpen(false)
+    }
 
     return (
         <Dialog
@@ -64,7 +62,9 @@ const CreatureDialog = ({ creature }) => {
                 </ul>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose}>Close</Button>
+                <Button onClick={handleClose}>
+                    Close
+                </Button>
             </DialogActions>
         </Dialog>
     )

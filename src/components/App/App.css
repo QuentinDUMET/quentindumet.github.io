@@ -2,11 +2,6 @@ body {
     background-color: rgb(129, 87, 62);
 }
 
-#root {
-    display: flex;
-    flex-direction: column;
-}
-
 #logo {
     width: 150px;
 }

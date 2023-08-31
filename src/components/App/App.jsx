@@ -70,7 +70,6 @@ const App = () => {
         handleResearche(research)
     }}, [research])
     
-    console.log(searchToShow);
     return (
         <>
             <header>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import TextField from '@mui/material/TextField';
-import { Autocomplete } from "@mui/material"
+import Autocomplete from '@mui/material/Autocomplete';
 
 const Searchbar = ({setResearch, setSearchToShow}) => {
 
@@ -30,17 +30,24 @@ const Searchbar = ({setResearch, setSearchToShow}) => {
         category: toPascalCase(entry.category)
     }));
 
+    const resetAutocomplete = () => {
+        Autocomplete.value = null
+    };
+
     return (
         <Autocomplete
             id="searchbar"
+            value={null}
             options={toPascalEntries.sort((a, b) => -b.category.localeCompare(a.category))}
             groupBy={(option) => option.category}
             getOptionLabel={option => option.name}
             sx={{ width: 500 }}
             renderInput={(params) => <TextField {...params} label="Search" />}
             onChange={(event, selectedValue) => {
-                selectedValue ? setResearch(selectedValue.name) && setSearchToShow(selectedValue) : setResearch('')
+                selectedValue ? setResearch(selectedValue.name) && setSearchToShow(selectedValue) : setResearch('') && setSearchToShow(null)
+                resetAutocomplete()
             }}
+
             isOptionEqualToValue={(option, value) => 
                 option &&
                 value &&
