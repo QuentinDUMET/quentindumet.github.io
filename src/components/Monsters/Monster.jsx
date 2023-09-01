@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useState } from "react"
+import PropTypes from 'prop-types';
+import { useState } from "react";
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -90,3 +91,7 @@ const MonsterTpl = ({enemy}) => {
 }
 
 export default MonsterTpl
+
+MonsterTpl.propTypes = {
+    enemy: PropTypes.object,
+}

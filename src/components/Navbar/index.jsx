@@ -1,14 +1,8 @@
 import { NavLink } from 'react-router-dom';
-import * as React from 'react';
+import PropTypes from 'prop-types';
 
 
-const Navlink = ({page, setPage, setResearch}) => {
-
-
-    const handleChange = (event, newValue) => {
-        setPage(newValue);
-        setResearch("");
-    };
+const Navlink = () => {
 
     return (
         <>
@@ -32,3 +26,9 @@ const Navbar = ({page, setPage, setResearch}) => {
 }
 
 export default Navbar
+
+Navbar.propTypes = {
+    page: PropTypes.string,
+    setPage: PropTypes.func,
+    setResearch: PropTypes.func,
+}

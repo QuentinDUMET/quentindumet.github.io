@@ -17,15 +17,13 @@ import axios from "axios";
 import logo from '../../assets/logoBOTW.png'
 import './App.css'
 
-
-
 const App = () => {
 
     const [research, setResearch] = useState("")
 
     const [page, setPage] = useState("Creatures");
     
-    const [searchToShow, setSearchToShow] = useState("")
+    const [searchToShow, setSearchToShow] = useState({})
 
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -64,10 +62,10 @@ const App = () => {
             console.log("Impossible de récupérer les infos depuis l'API", e)
         }
     }
-    
+
     useEffect(() => {
         if (research !== "") {
-        handleResearche(research)
+        handleResearche(research);
     }}, [research])
     
     return (
@@ -78,12 +76,14 @@ const App = () => {
                 <Searchbar setResearch={setResearch} setSearchToShow={setSearchToShow} />
             </header> 
             <Routes>
-                <Route path='/' element={<Home />} />
+                <Route path='/' element={<><Home /> <SearchResult searchToShow={searchToShow} /></>} />
+
                 <Route path='/creatures' element={<><Creatures {...pageGestion} /> <SearchResult searchToShow={searchToShow} /></>} />
+
                 <Route path='/monsters' element={<><Monsters {...pageGestion} /> <SearchResult searchToShow={searchToShow} /></> } />
                 <Route path='/materials' element={<><Materials {...pageGestion} /> <SearchResult searchToShow={searchToShow} /></> } />
                 <Route path='/equipments' element={<><Equipments {...pageGestion} /> <SearchResult searchToShow={searchToShow} /></> } />
-                <Route path='/treasures' element={<Treasures />} />
+                <Route path='/treasures' element={<><Treasures /> <SearchResult searchToShow={searchToShow} /></> } />
             </Routes>
             {location.pathname !== "/" && location.pathname !== "/treasures" && (
                 <footer>

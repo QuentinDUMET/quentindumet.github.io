@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types'
 import { useState } from "react"
 
 import Card from '@mui/material/Card';
@@ -90,3 +91,7 @@ const EquipmentTpl = ({stuff}) => {
 }
 
 export default EquipmentTpl
+
+EquipmentTpl.propTypes = {
+    stuff: PropTypes.object,
+}

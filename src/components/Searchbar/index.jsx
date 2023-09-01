@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import TextField from '@mui/material/TextField';
@@ -44,10 +45,9 @@ const Searchbar = ({setResearch, setSearchToShow}) => {
             sx={{ width: 500 }}
             renderInput={(params) => <TextField {...params} label="Search" />}
             onChange={(event, selectedValue) => {
-                selectedValue ? setResearch(selectedValue.name) && setSearchToShow(selectedValue) : setResearch('') && setSearchToShow(null)
+                selectedValue ? setResearch(selectedValue.name) && setSearchToShow(selectedValue) : setResearch('') && setSearchToShow({})
                 resetAutocomplete()
             }}
-
             isOptionEqualToValue={(option, value) => 
                 option &&
                 value &&
@@ -67,3 +67,8 @@ const Searchbar = ({setResearch, setSearchToShow}) => {
 }
 
 export default Searchbar
+
+Searchbar.propTypes = {
+    setResearch: PropTypes.func,
+    setSearchToShow: PropTypes.func
+};

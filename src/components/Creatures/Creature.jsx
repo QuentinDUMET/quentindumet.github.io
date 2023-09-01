@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useState, useEffect } from "react"
+import PropTypes from 'prop-types'
+import { useState } from "react"
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -97,3 +98,7 @@ const CreatureTpl = ({creature}) => {
 }
 
 export default CreatureTpl
+
+CreatureTpl.propTypes = {
+    creature: PropTypes.object,
+}

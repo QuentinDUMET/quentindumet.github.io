@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import PropTypes from 'prop-types'
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
@@ -24,3 +24,11 @@ const PageManagement = ({prevPage, nextPage, setCurrentPage, currentPage, totalP
 }
 
 export default PageManagement;
+
+PageManagement.propTypes = {
+    prevPage: PropTypes.func,
+    nextPage: PropTypes.func,
+    setCurrentPage: PropTypes.func,
+    currentPage: PropTypes.number,
+    totalPages:PropTypes.number, 
+}

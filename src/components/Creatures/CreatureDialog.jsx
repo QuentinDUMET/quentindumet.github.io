@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useState } from "react"
+import PropTypes from 'prop-types'
+import { useState, useEffect } from "react"
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -29,14 +30,21 @@ const CreatureDialog = ({ creature }) => {
             </ul>
         </li>
     ) :
-    <li>No drops</li> 
+    <li>No drops</li>
 
-    const [open, setOpen] = useState(true)
+    const [open, setOpen] = useState(true);
 
     const handleClose = () => {
-        setOpen(false)
+        setOpen(false);
     }
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setOpen(true);
+        }, 300);
+        return () => clearTimeout(timer);
+    }, [creature])
+    
     return (
         <Dialog
         open={open}
@@ -71,3 +79,7 @@ const CreatureDialog = ({ creature }) => {
 }
 
 export default CreatureDialog
+
+CreatureDialog.propTypes = {
+    creature: PropTypes.object,
+};

@@ -12,7 +12,7 @@ const Creatures = ({currentPage, setTotalPages, entryPerPage, searchToShow }) =>
 
     useEffect(() => {
         setTotalPages(Math.ceil(creatures.length / entryPerPage));
-    }, [creatures]);
+    }, [creatures, entryPerPage, setTotalPages]);
 
     const indexOfLastCreature = currentPage * entryPerPage;
     const indexOfFirstCreature = indexOfLastCreature - entryPerPage;
@@ -55,7 +55,8 @@ const Creatures = ({currentPage, setTotalPages, entryPerPage, searchToShow }) =>
 Creatures.propTypes = {
     currentPage: PropTypes.number,
     setTotalPages: PropTypes.func,
-    entryPerPage: PropTypes.number
+    entryPerPage: PropTypes.number,
+    searchToShow: PropTypes.func,
 }
 
 export default Creatures
