@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { useState } from "react"
 
 import Card from '@mui/material/Card';
@@ -53,7 +54,7 @@ const TreasureTpl = ({chest}) => {
                     alt={chest.name}
                     />
                     <CardContent>
-                    <Typography sx={{ textAlign: 'center', textTransform: 'capitalize', fontSize: 20 }} gutterBottom variant="h5" component="div">
+                    <Typography sx={{ textAlign: 'center', textTransform: 'capitalize', fontSize: 20, fontFamily: 'botwTitleFont' }} gutterBottom variant="h5" component="div">
                         {chest.name}
                     </Typography>
                     </CardContent>
@@ -67,7 +68,7 @@ const TreasureTpl = ({chest}) => {
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle sx={{ textAlign: 'center', textTransform: 'capitalize', fontWeight: 'bold', fontSize: 24 }}>{chest.name}</DialogTitle>
+                <DialogTitle sx={{ textAlign: 'center', textTransform: 'capitalize', fontWeight: 'bold', fontSize: 24, fontFamily: 'botwTitleFont' }}>{chest.name}</DialogTitle>
                 <DialogContent sx={{ fontSize: 18, textAlign: 'justify' }}>
                         <img style={{ display: 'block', margin: '0 auto', borderRadius: 20 }} src={chest.image} alt={chest.name} />
                         <p>{chest.description}</p>
@@ -86,19 +87,11 @@ const TreasureTpl = ({chest}) => {
                 </DialogActions>
             </Dialog>
         </>
-        // <ul key={chest.id}>
-        //     <img src={chest.image}/>
-        //     <li>Treasures name : {chest.name}</li>
-        //     <li>Description : {chest.description} </li>
-        //     {dropsElt}
-        //     <li>Location :
-        //         <ul>
-        //             {locationElt}
-        //         </ul>
-        //     </li>
-        //     {dlcElt}
-        // </ul>
     )
 }
 
 export default TreasureTpl
+
+TreasureTpl.propTypes = {
+    chest: PropTypes.object,
+};

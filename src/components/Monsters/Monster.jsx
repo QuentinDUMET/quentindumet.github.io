@@ -31,7 +31,7 @@ const MonsterTpl = ({enemy}) => {
                 {enemy.drops.map(drop => (<li key={drop}>{drop}</li>))}
             </ul>
         </li>
-        )
+    )
 
     const [open, setOpen] = useState(false);
 
@@ -54,7 +54,7 @@ const MonsterTpl = ({enemy}) => {
                     alt={enemy.name}
                     />
                     <CardContent>
-                    <Typography sx={{ textAlign: 'center', textTransform: 'capitalize', fontSize: 20 }} gutterBottom variant="h5" component="div">
+                    <Typography sx={{ textAlign: 'center', textTransform: 'capitalize', fontSize: 20, fontFamily: 'botwTitleFont' }} gutterBottom variant="h5" component="div">
                         {enemy.name}
                     </Typography>
                     </CardContent>
@@ -68,7 +68,7 @@ const MonsterTpl = ({enemy}) => {
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle sx={{ textAlign: 'center', textTransform: 'capitalize', fontWeight: 'bold', fontSize: 24 }}>{enemy.name}</DialogTitle>
+                <DialogTitle sx={{ textAlign: 'center', textTransform: 'capitalize', fontWeight: 'bold', fontSize: 24, fontFamily: 'botwTitleFont' }}>{enemy.name}</DialogTitle>
                 <DialogContent sx={{ fontSize: 18, textAlign: 'justify' }}>
                         <img style={{ display: 'block', margin: '0 auto', borderRadius: 20 }} src={enemy.image} alt={enemy.name} />
                         <p>{enemy.description}</p>

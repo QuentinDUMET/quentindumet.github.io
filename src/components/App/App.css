@@ -1,9 +1,42 @@
 body {
-    background-color: rgb(129, 87, 62);
+    background-image: url('../../assets/Zelda-BG.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 99vh;
+    font-family: 'botwFont';
 }
 
 #logo {
     width: 150px;
+}
+
+@font-face {
+    font-family: 'nintendo';
+    src: url('../../fonts/nintendo-nes-font.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'botwFont';
+    src: url('../../fonts/Triforce.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'botwTitleFont';
+    src: url('../../fonts/The-Wild-Breath-of-Zelda.otf') format('truetype');
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 12vh;
+    font-family: 'nintendo';
+    font-size: 25px;
+}
+
+nav {
+    column-gap: 20%;
+    display: flex;
+    place-content: center;
 }
 
 header {
@@ -11,12 +44,24 @@ header {
     align-items: center;
     justify-content: space-between;
     position: sticky;
-    top: 0
+    top: 0;
+    border-bottom: 2px white solid;
+    background-color: rgba(255, 255, 255, 0.4);
+    margin: -8px;
+    padding: 5px 15px;
+}
+
+main {
+    margin-top: 15px;
 }
 
 footer {
     display: flex;
-    position: sticky;
+    position: fixed;
     bottom: 0;
+    left: 0;
+    width: 100%; 
     justify-content: center;
+    border-top: 2px white solid;
+    background-color: rgba(255, 255, 255, 0.4);
 }

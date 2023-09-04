@@ -44,6 +44,10 @@ const App = () => {
             setCurrentPage(currentPage - 1);
         }
     }
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [location.pathname])
     
     const pageGestion = {
         currentPage: currentPage,

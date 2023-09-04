@@ -50,7 +50,7 @@ const MaterialsTpl = ({item}) => {
                     alt={item.name}
                     />
                     <CardContent>
-                    <Typography sx={{ textAlign: 'center', textTransform: 'capitalize', fontSize: 20 }} gutterBottom component="div">
+                    <Typography sx={{ textAlign: 'center', textTransform: 'capitalize', fontSize: 20, fontFamily: 'botwTitleFont' }} gutterBottom component="div">
                         {item.name}
                     </Typography>
                     </CardContent>
@@ -64,7 +64,7 @@ const MaterialsTpl = ({item}) => {
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle sx={{ textAlign: 'center', textTransform: 'capitalize', fontWeight: 'bold', fontSize: 24 }}>{item.name}</DialogTitle>
+                <DialogTitle sx={{ textAlign: 'center', textTransform: 'capitalize', fontWeight: 'bold', fontSize: 24, fontFamily: 'botwTitleFont' }}>{item.name}</DialogTitle>
                 <DialogContent sx={{ fontSize: 18, textAlign: 'justify' }}>
                         <img style={{ display: 'block', margin: '0 auto', borderRadius: 20 }} src={item.image} alt={item.name} />
                         <p>{item.description}</p>

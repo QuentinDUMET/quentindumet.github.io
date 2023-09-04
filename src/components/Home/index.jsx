@@ -1,8 +1,10 @@
+/* eslint-disable react/no-unescaped-entities */
 const Home = () => {
 
     return (
         <div className="home">
-            Accueil
+            <p>IT'S DANGEROUS TO GO ALONE ! </p>
+            <p>USE THIS WIKI !</p>
         </div>
     )
 }

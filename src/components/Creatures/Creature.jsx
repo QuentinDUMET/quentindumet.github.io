@@ -59,7 +59,7 @@ const CreatureTpl = ({creature}) => {
                     alt={creature.name}
                     />
                     <CardContent>
-                    <Typography sx={{ textAlign: 'center', textTransform: 'capitalize', fontSize: 20 }} gutterBottom variant="h5" component="div">
+                    <Typography sx={{ textAlign: 'center', textTransform: 'capitalize', fontSize: 20, fontFamily: 'botwTitleFont' }} gutterBottom variant="h5" component="div">
                         {creature.name}
                     </Typography>
                     </CardContent>
@@ -73,7 +73,7 @@ const CreatureTpl = ({creature}) => {
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle sx={{ textAlign: 'center', textTransform: 'capitalize', fontWeight: 'bold', fontSize: 24 }}>{creature.name}</DialogTitle>
+                <DialogTitle sx={{ textAlign: 'center', textTransform: 'capitalize', fontWeight: 'bold', fontSize: 24, fontFamily: 'botwTitleFont' }}>{creature.name}</DialogTitle>
                 <DialogContent sx={{ fontSize: 18, textAlign: 'justify' }}>
                     <img style={{ display: 'block', margin: '0 auto', borderRadius: 20 }} src={creature.image} alt={creature.name} />
                     <p>{creature.description}</p>
