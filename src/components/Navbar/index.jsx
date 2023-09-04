@@ -6,7 +6,7 @@ const Navlink = () => {
 
     return (
         <>
-            <NavLink to="creatures"><img src="../../src/assets/Creatures.png"/></NavLink>
+            <NavLink to="creatures"><img src="../../public/Creatures.png"/></NavLink>
             <NavLink to="monsters"><img src="../../src/assets/Monsters.png"/></NavLink>
             <NavLink to="materials"><img src="../../src/assets/Materials.png"/></NavLink>
             <NavLink to="equipments"><img src="../../src/assets/Equipment.png"/></NavLink>
