@@ -4,7 +4,7 @@ import App from './components/App/App.jsx'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <BrowserRouter>
+    <BrowserRouter basename='/quentinDUMET.github.io'>
         <App />
     </BrowserRouter>
 )
