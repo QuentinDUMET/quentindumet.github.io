@@ -2,7 +2,7 @@
 
 Projet wiki Zelda BOTW
 
-Le [site](https://quentindumet.github.io/).
+[Le site](https://quentindumet.github.io/).
 
 Peut-être un jour upgrade vers TOTK
 
